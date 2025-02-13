@@ -22,8 +22,12 @@ public class ConvertHexToDec
       try
       {
          Scanner scan = new Scanner(f);
-         String line = scan.nextLine();            //scans entire first line in file
-         return line;
+         while( scan.hasNextLine() )
+         {
+            String line = scan.nextLine();            //scans entire first line in file
+            System.out.println( "Debug: " + line );
+         }
+         return null;
       }catch(FileNotFoundException e)
       {     
          System.out.println( e.getMessage() ); 
