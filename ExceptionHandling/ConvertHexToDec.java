@@ -8,9 +8,24 @@ public class ConvertHexToDec
       try
       {
          String hex = readHexFromFile( "HexNum.txt" );
-         int num = convertHexToDec( "2GD" );
+         int num = convertHexToDec( hex );
+         writeToFile(hex, num);
          System.out.println( "Hex Value: " + hex + "\nDec Value: " + num );
       }catch( NumberFormatException e )
+      {
+         System.out.println( e.getMessage() );
+      }
+   }
+   
+   public static void writeToFile(String hexVal, int decVal)
+   {
+      File f = new File("DecValues.txt");
+      try
+      {
+         PrintWriter printToFile = new PrintWriter( f );
+         printToFile.println("Hex Val: " + hexVal + ", Dec Val: " + decVal);
+         printToFile.close();
+      }catch(FileNotFoundException e )
       {
          System.out.println( e.getMessage() );
       }
@@ -22,12 +37,13 @@ public class ConvertHexToDec
       try
       {
          Scanner scan = new Scanner(f);
+         String line = "";
          while( scan.hasNextLine() )
          {
-            String line = scan.nextLine();            //scans entire first line in file
+            line = scan.nextLine();            //scans entire first line in file
             System.out.println( "Debug: " + line );
          }
-         return null;
+         return line;
       }catch(FileNotFoundException e)
       {     
          System.out.println( e.getMessage() ); 
