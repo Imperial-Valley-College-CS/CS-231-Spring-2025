@@ -1,12 +1,16 @@
 import java.io.*;
-import java.util.Scanner;
+import java.util.*;
 
 public class TestInvader
 {
    public static void main(String[] args)
    {
       Squid squid = new Squid(10,50);
-      setBody("InvaderMatrices/CrabMatrix.txt");
+      boolean[][] body = setBody("InvaderMatrices/CrabMatrix.txt");
+      for( boolean[] row : body )
+      {
+         System.out.println( Arrays.toString(row) );
+      }
    }
    
    public static boolean[][] setBody( String filename )
@@ -19,9 +23,17 @@ public class TestInvader
          boolean[][] body = new boolean[8][12];
          for( int i = 0; i < body.length; i++ )
          {         
-            System.out.println( scan.nextLine() );
+            String line = scan.nextLine();
+            String[] tokens = line.split(",");
+            for( int j = 0; j < tokens.length; j++ )
+            {  
+               if( tokens[j].equals("1") )
+                  body[i][j] = true;
+               else
+                  body[i][j] = false;
+            }
          }
-         return null;
+         return body;
       }catch(FileNotFoundException e)
       {
          return null;
