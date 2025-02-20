@@ -15,7 +15,11 @@ public class Interfaces extends Application
    @Override
    public void start(Stage s)
    {
-      scene.setOnMouseClicked(mh);    //makes mouse come to live
+      //scene.setOnMouseClicked(mh);    //makes mouse come to live
+      
+      //using lambda expression instead
+      scene.setOnMouseClicked( e -> {System.out.println( "X: " + e.getX() + ", Y: " + e.getY() );} );
+      
       s.setScene(scene);
       s.show();   //shows a Stage
    }  
