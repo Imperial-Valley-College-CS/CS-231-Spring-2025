@@ -21,6 +21,8 @@ public class Invader
       this.body = new boolean[rows][cols];
    }
    
+   protected Position getPosition(){ return this.pos; }
+   
    protected boolean[][] getBody(){ return this.body; }
    
    protected void setBody( String filename )
