@@ -21,9 +21,9 @@ public class Invader
       this.body = new boolean[rows][cols];
    }
    
-   public boolean[][] getBody(){ return this.body; }
+   protected boolean[][] getBody(){ return this.body; }
    
-   public void setBody( String filename )
+   protected void setBody( String filename )
    {
       File f = new File( filename );
       try
