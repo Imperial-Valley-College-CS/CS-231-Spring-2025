@@ -5,6 +5,8 @@ import javafx.scene.Group;
 import javafx.scene.canvas.*;
 import javafx.scene.paint.Color;
 import javafx.animation.AnimationTimer;
+import javafx.event.*;
+import javafx.scene.input.KeyEvent;
 
 public class App extends Application
 {
@@ -15,12 +17,14 @@ public class App extends Application
    Octopus octo = new Octopus(0, 50);
    int size = 5;
    Timer timer = new Timer();
+   KeyHandler handleKey = new KeyHandler();
    
    @Override
    public void start(Stage s)
    {
       timer.start();
       //drawInvader();
+      scene.setOnKeyPressed(handleKey);      //makes keyboard come alive
       s.setScene(scene);
       s.show();
    }
@@ -57,7 +61,7 @@ public class App extends Application
       x += 1*size;
       //y += size;
       octo.getPosition().setX( x );
-      if( x > 400 )          
+      if( x > Constants.CANVAS_WIDTH )          
          octo.getPosition().setX( 0 );
    }
    
@@ -72,8 +76,22 @@ public class App extends Application
          if( now - last > 1*dt )    //move every five frames
          {
             move();
-            drawInvader();
+            if( octo.alive() )
+               drawInvader();
             last = now;
+         }
+      }
+   }
+   
+   class KeyHandler implements EventHandler<KeyEvent>
+   {
+      @Override
+      public void handle(KeyEvent e)
+      {
+         System.out.println( e.getText() );
+         if( e.getText().equals("a") )
+         {
+            octo.hit();       //invoke hit on Octopus when space key is pressed
          }
       }
    }

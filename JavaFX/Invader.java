@@ -10,7 +10,7 @@ public class Invader
    protected int cols = 12;
    protected Color color;
    protected Position pos;
-   protected boolean isAlive;
+   protected boolean isAlive = true;
    protected boolean[][] body = new boolean[rows][cols];
    protected String userDir, matDir;
    
@@ -25,6 +25,7 @@ public class Invader
    
    protected boolean[][] getBody(){ return this.body; }
    protected Color getColor(){ return this.color; }
+   protected boolean alive(){ return this.isAlive; }
    
    protected boolean hit()
    {
