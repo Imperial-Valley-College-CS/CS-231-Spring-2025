@@ -2,14 +2,17 @@ import javafx.animation.AnimationTimer;
 
 public class Octopus extends Invader
 {
+   String[] octopusFiles = {"/OctopusMatrix.txt", "/HurtOctopusMatrix.txt", "DamagedOctopusMatrix.txt"};
    Timer timer = new Timer();
    
    public Octopus(int x, int y)
    {
       super(x,y);
       super.color = Constants.OCTO_COLOR;
-      setBody("OctopusMatrix.txt");
-      timer.start();    //starts our timer(invokes handle method on every frame)
+      super.health = octopusFiles.length;
+      super.speedX = Constants.OCTO_SPEED;
+      setBody("InvaderMatrices" + octopusFiles[1]);
+      //timer.start();    //starts our timer(invokes handle method on every frame)
    }
 
    class Timer extends AnimationTimer

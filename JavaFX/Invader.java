@@ -5,7 +5,7 @@ import java.util.*;
 public class Invader
 {
    //data fields
-   protected int health, speedX, speedY;
+   protected double health, speedX, speedY;
    protected int rows = 8;
    protected int cols = 12;
    protected Color color;
@@ -25,6 +25,15 @@ public class Invader
    
    protected boolean[][] getBody(){ return this.body; }
    protected Color getColor(){ return this.color; }
+   
+   protected boolean hit()
+   {
+      this.health--;
+      if( this.health < 0 )
+         this.isAlive = false;
+         
+      return this.isAlive;
+   }
    
    protected void setBody( String filename )
    {
