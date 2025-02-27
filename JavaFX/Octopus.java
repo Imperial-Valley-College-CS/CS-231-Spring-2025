@@ -7,6 +7,7 @@ public class Octopus extends Invader
    public Octopus(int x, int y)
    {
       super(x,y);
+      super.color = Constants.OCTO_COLOR;
       setBody("OctopusMatrix.txt");
       timer.start();    //starts our timer(invokes handle method on every frame)
    }

@@ -8,7 +8,7 @@ import javafx.animation.AnimationTimer;
 
 public class App extends Application
 {
-   Canvas canvas = new Canvas(400, 400);
+   Canvas canvas = new Canvas(Constants.CANVAS_WIDTH, Constants.CANVAS_HEIGHT);
    GraphicsContext gc = canvas.getGraphicsContext2D();
    Group g = new Group(canvas);
    Scene scene = new Scene(g);
@@ -27,21 +27,21 @@ public class App extends Application
    
    public void drawInvader()
    {
-      gc.setFill( Color.BLACK );
-      gc.fillRect(0,0,400, 400 );
+      gc.setFill( Constants.BKGRND_COLOR );
+      gc.fillRect(0,0,Constants.CANVAS_WIDTH, Constants.CANVAS_HEIGHT);
       
-      gc.setFill( Color.RED );
+      gc.setFill( octo.getColor() );
       boolean[][] body = octo.getBody();
       
       int xStart = octo.getPosition().getX();
       int yStart = octo.getPosition().getY();
       int x = xStart;
       int y = yStart; 
-      for( boolean[] row : body )
+      for( int i = 0; i < body.length; i++ )
       {
-         for( boolean val : row )
+         for( int j = 0; j < body[i].length; j++ )
          {
-            if( val )
+            if( body[i][j] )
                gc.fillRect(x,y,size,size);
                
             x+= size;     //increment x by 10 to draw next square in row
@@ -54,7 +54,7 @@ public class App extends Application
    {
       int x = octo.getPosition().getX();
       int y = octo.getPosition().getY();
-      x += size;
+      x += 1*size;
       //y += size;
       octo.getPosition().setX( x );
       if( x > 400 )          
@@ -64,14 +64,17 @@ public class App extends Application
    class Timer extends AnimationTimer
    {
       long last = 0;
+      long dt = 16000000;
+      
       @Override
       public void handle(long now)     //invoked on every computational frame
       {
-         long dt = now - last;
-         double dtSec = (double)(dt)*Math.pow(10,-9);
-         move();
-         drawInvader();
-         last = now;
+         if( now - last > 1*dt )    //move every five frames
+         {
+            move();
+            drawInvader();
+            last = now;
+         }
       }
    }
 }

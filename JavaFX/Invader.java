@@ -24,6 +24,7 @@ public class Invader
    protected Position getPosition(){ return this.pos; }
    
    protected boolean[][] getBody(){ return this.body; }
+   protected Color getColor(){ return this.color; }
    
    protected void setBody( String filename )
    {
