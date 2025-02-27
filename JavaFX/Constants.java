@@ -7,6 +7,7 @@ public class Constants
    public static final Color BKGRND_COLOR = Color.BLACK;
    
    public static final Color OCTO_COLOR = Color.WHITE;
+   public static final Color OCTO_COLOR2 = Color.RED;
    public static final double SIZE = 5;
    public static final double OCTO_SPEED = 2*SIZE;
 }

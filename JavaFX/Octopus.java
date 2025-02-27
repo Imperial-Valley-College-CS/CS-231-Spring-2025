@@ -3,6 +3,7 @@ import javafx.animation.AnimationTimer;
 public class Octopus extends Invader
 {
    String[] octopusFiles = {"/OctopusMatrix.txt", "/HurtOctopusMatrix.txt", "/DamagedOctopusMatrix.txt"};
+   int count = 0;
    Timer timer = new Timer();
    
    public Octopus(int x, int y)
@@ -28,6 +29,18 @@ public class Octopus extends Invader
       
       return super.isAlive;      
    }
+   
+   public void blink()
+   {
+      if( count % 2 == 0 )
+         super.color = Constants.OCTO_COLOR2;
+      else
+         super.color = Constants.OCTO_COLOR;
+      
+      count++;   
+      if( count > 1000 )
+         count = 0;
+   }
 
    class Timer extends AnimationTimer
    {
@@ -38,6 +51,7 @@ public class Octopus extends Invader
          long dt = now - last;
          double dtSec = (double)(dt)*Math.pow(10,-9);
          //System.out.printf( "%.3f%n", dtSec );
+         blink();
          last = now;
       }
    }
