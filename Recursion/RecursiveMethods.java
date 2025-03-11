@@ -6,7 +6,17 @@ public class RecursiveMethods
          System.out.printf( "%1.0f, %1.2f\n", (float)i, sumSeries(i) );
          
       System.out.println( reverse("decaf") );
+      reverseDisplay(12345);
       
+   }
+   
+   public static void reverseDisplay( int num )
+   {
+      if( num == 0 )    //base case
+         return;
+      
+      System.out.print(num%10);
+      reverseDisplay(num/10);
    }
    
    public static String reverse( String str )
