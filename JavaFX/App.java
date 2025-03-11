@@ -22,6 +22,7 @@ public class App extends Application
    @Override
    public void start(Stage s)
    {
+      System.out.println( "brother".compareTo("bro") );
       timer.start();
       //drawInvader();
       scene.setOnKeyPressed(handleKey);      //makes keyboard come alive
