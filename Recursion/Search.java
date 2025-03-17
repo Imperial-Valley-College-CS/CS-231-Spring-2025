@@ -2,9 +2,9 @@ public class Search
 {
    public static void main(String[] args)
    {
-      int[] arr = {2, 5, 8, 11, 15, 21};
+      int[] arr = {2, 15, 8, 11, 5, 21};
       //int index = search(arr, 15);
-      int index = binarySearch(arr, 15);
+      int index = binarySearch(arr, 17);
       System.out.println( index );
    }
    
@@ -15,12 +15,15 @@ public class Search
       return binarySearch(arr, value, low, high);
    }
    
-   public static int search(int[] arr, int value)
+   public static int search(int[] arr, int value, int i)
    {
-      for( int i = 0; i < arr.length; i++)
-         if( arr[i] == value )
-            return i;
-      return -1;
+      if( i < arr.length )
+         if( value == arr[i] )
+            return i;   
+         else
+            return search( arr, value, i+1); //recursive call        
+      else
+         return -1;
    }
    
    public static int binarySearch( int[] arr, int value, int low, int high )
