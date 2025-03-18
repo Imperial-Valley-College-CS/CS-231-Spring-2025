@@ -15,6 +15,10 @@ public class Search
       return binarySearch(arr, value, low, high);
    }
    
+   public static int search(int[] arr, int value)
+   {
+      return search(arr, value, 0);
+   }
    public static int search(int[] arr, int value, int i)
    {
       if( i < arr.length )
