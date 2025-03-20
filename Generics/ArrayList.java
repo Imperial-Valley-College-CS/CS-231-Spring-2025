@@ -17,7 +17,32 @@ public class ArrayList<E>
    
    public void add(E obj)
    {
+      if( this.size == arr.length )    //check if arr is full
+         resize();
+         
       this.arr[this.size] = obj;
       this.size++;
+   }
+   
+   public void add(E obj, int index)
+   {
+      if( this.size == arr.length )    //check if arr is full
+         resize();
+         
+      for( int i = size; i > index; i-- )  //shifts elements one space to left
+         this.arr[i] = arr[i-1];
+         
+      this.arr[index] = obj;     //insert element at specified index
+      this.size++;               
+   }
+   
+   private void resize()
+   {
+      E[] newArr = (E[])(new Object[arr.length*2]);
+      for(int i = 0; i < this.size; i++)
+      {
+         newArr[i] = this.arr[i];
+      }
+      this.arr = newArr;
    }
 }
