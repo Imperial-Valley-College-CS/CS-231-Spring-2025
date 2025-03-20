@@ -1,6 +1,6 @@
 import java.util.GregorianCalendar;
 
-public class Videogame
+public class Videogame implements Comparable<Videogame>
 {
    //data fields (instance variables or static variables)
    public static boolean userInteractive = true;
@@ -59,4 +59,11 @@ public class Videogame
    
    //getter methods
    public String getTitle(){ return this.title; }
+   public int getSales(){ return this.sales; }
+   
+   @Override
+   public int compareTo( Videogame v )
+   {
+      return this.sales - v.getSales();
+   }
 }
