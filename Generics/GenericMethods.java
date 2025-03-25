@@ -11,12 +11,17 @@ public class GenericMethods
       Student s3 = new Student("Olivia", "G00156202", "6-23-1991");
       Student[] stus = {s1, s2, s3};
       
-      String ans1 = max("hulk","spider-man");
-      GregorianCalendar ans2 = max(cal1, cal2);   
-      Student ans3 = max(s1, s2);
-      System.out.println( ans1 );   
-      System.out.println( ans3 );
-      System.out.println( ans2 );
+      sort(stus);
+      
+      for( int i = 0; i < stus.length; i++ )
+         System.out.println( stus[i] );
+      
+      // String ans1 = max("hulk","spider-man");
+//       GregorianCalendar ans2 = max(cal1, cal2);   
+//       Student ans3 = max(s1, s2);
+//       System.out.println( ans1 );   
+//       System.out.println( ans3 );
+//       System.out.println( ans2 );
    }
    
    public static <E extends Comparable<? super E>> E max(E obj1, E obj2)

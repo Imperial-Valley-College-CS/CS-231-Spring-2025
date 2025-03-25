@@ -40,6 +40,8 @@ public class Student implements Comparable<Student>
    }
    
    //methods 
+   public String getName(){ return this.name; }
+   
    public int getAge()
    { 
       setAge();
@@ -50,7 +52,7 @@ public class Student implements Comparable<Student>
    @Override
    public int compareTo(Student s)
    {
-      return this.dob.compareTo( s.getDOB() );
+      return this.name.compareTo( s.getName() );
    }
       
    @Override
