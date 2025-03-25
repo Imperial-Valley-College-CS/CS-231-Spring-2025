@@ -19,15 +19,14 @@ public class Student implements Comparable<Student>
       setDOB( dob );
       setAge();
    }
-   
+      
    private void setAge()
    {
       GregorianCalendar today = new GregorianCalendar();
       long time1 = today.getTimeInMillis();
       long time2 = this.dob.getTimeInMillis();
-      long diff = time1 - time2;
-      this.age = (int)(TimeUnit.MILLISECONDS.toDays(diff)/365.2422);
-      System.out.println( this.age );      
+      long diff = (time1 - time2)/(1000*60*60*24);
+      this.age = (int)(diff/365.2422);    
    }
    
    private void setDOB( String dob )   //expected dob format: 7-3-2005
@@ -41,7 +40,11 @@ public class Student implements Comparable<Student>
    }
    
    //methods 
-   public int getAge(){ return this.age; };
+   public int getAge()
+   { 
+      setAge();
+      return this.age; 
+   };
    public GregorianCalendar getDOB(){ return this.dob; }
    
    @Override
