@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class Student implements Comparable<Student>
 {
@@ -11,12 +12,22 @@ public class Student implements Comparable<Student>
    private double gpa;  
    
    //constructor(s)   
-   public Student(String n, int a, String g, String dob)
+   public Student(String n, String g, String dob)
    {
       this.name = n;
-      this.age = a;
       this.id = g;
       setDOB( dob );
+      setAge();
+   }
+   
+   private void setAge()
+   {
+      GregorianCalendar today = new GregorianCalendar();
+      long time1 = today.getTimeInMillis();
+      long time2 = this.dob.getTimeInMillis();
+      long diff = time1 - time2;
+      this.age = (int)(TimeUnit.MILLISECONDS.toDays(diff)/365.2422);
+      System.out.println( this.age );      
    }
    
    private void setDOB( String dob )   //expected dob format: 7-3-2005
