@@ -1,7 +1,5 @@
 package PA9_Stacks.src.test.java;
 
-import PA9_Stacks.src.main.java.*;
-
 public class TestStacks
 {
    public static void main(String[] args)
@@ -21,7 +19,7 @@ public class TestStacks
    public static void testBalanceChecker()
    {
       String path = System.getProperty("user.dir");
-      String filename = path+"/PA10_Stacks/src/test/java/TestStacks.java";
+      String filename = "TestStacks.java";
       
       BalanceChecker b = new BalanceChecker(filename);
       if( b.parse() )
