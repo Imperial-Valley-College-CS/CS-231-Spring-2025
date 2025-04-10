@@ -6,6 +6,13 @@ public class TestVideogames
    public static void main(String[] args)
    {
       ArrayList<Videogame> games = readData("VideogameData/DataSheetVideogames.csv");
+      PriorityQueue<Videogame> pqGames = new PriorityQueue<>(new TitleComparator());
+      
+      for( Videogame g : games )
+         pqGames.offer( g );
+         
+      for( int i = 0; i < 1; i++ )
+         System.out.println( pqGames.poll() );
    }
    
    public static ArrayList<Videogame> readData( String filename )
@@ -39,6 +46,15 @@ public class TestVideogames
       {
          System.out.println( filename + " not found. " );
          return null;
+      }
+   }
+   
+   static class TitleComparator implements Comparator<Videogame>
+   {
+      @Override
+      public int compare(Videogame obj1, Videogame obj2)
+      {
+         return obj1.getTitle().compareTo( obj2.getTitle() );
       }
    }
 
