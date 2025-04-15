@@ -71,4 +71,10 @@ public class Videogame implements Comparable<Videogame>
       return "Title: " + this.title + "\nSales: " + this.sales 
          + "\nRelease Date: " + getFormattedDate();
    }
+   
+   @Override 
+   public int hashCode()      //inherited from Object (override if you want to add Videogames to a Set)
+   {
+      return this.title.hashCode()+this.series.hashCode()+this.sales;
+   }
 }
