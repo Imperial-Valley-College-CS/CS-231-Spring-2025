@@ -8,7 +8,7 @@ public class App extends Application
 {
    Group g = new Group();     //no argument necessary
    Scene scene = new Scene(g); //Parent argument required
-   Canvas canvas = new Canvas(400,600);
+   Canvas canvas = new Canvas(Constants.canWid,Constants.canHei);
    GraphicsContext gc = canvas.getGraphicsContext2D();
    
    @Override
@@ -16,7 +16,13 @@ public class App extends Application
    {
       g.getChildren().add( canvas );
       Card c = new Card("2","C");
-      gc.drawImage( c.getImage(), 50, 50 );
+      Card ca = new Card("J","H");
+      double x = 50;
+      double y = 50;
+      gc.drawImage( c.getImage(), x, y, Constants.cardWid, Constants.cardHei );
+      y += 30;
+      gc.drawImage( ca.getImage(), x, y, Constants.cardWid, Constants.cardHei );
+      
       s.setScene(scene);
       s.show();
    }
