@@ -15,9 +15,8 @@ public class App extends Application
    public void start(Stage s)
    {
       g.getChildren().add( canvas );
-      gc.setFill( Color.RED );
-      gc.fillRect(50,50,10,10);
       Card c = new Card("2","C");
+      gc.drawImage( c.getImage(), 50, 50 );
       s.setScene(scene);
       s.show();
    }

@@ -23,6 +23,11 @@ public class Card
       imgView = new ImageView(image);
    }
    
+   public Image getImage()
+   {
+      return this.image;
+   }
+   
    public ImageView getImageView()
    {
       return this.imgView;
