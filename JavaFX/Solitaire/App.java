@@ -16,7 +16,7 @@ public class App extends Application
    {
       g.getChildren().add( canvas );      
       Data.createDeck();
-      //renderDeck();      
+      renderDeck();      
       s.setScene(scene);
       s.show();
    }
@@ -26,11 +26,12 @@ public class App extends Application
       double x = 0;
       double y = 0;
       
-      for( Card c : Constants.deck )
+      for( Integer key : Constants.deck.keySet() )
       {
+         Card c = Constants.deck.get(key);         
          gc.drawImage( c.getImage(), x, y, Constants.cardWid, Constants.cardHei );
          x += Constants.cardWid;
-         if( x > Constants.canWid )
+         if( x >= Constants.canWid )
          {
             x = 0;
             y += Constants.cardHei;
