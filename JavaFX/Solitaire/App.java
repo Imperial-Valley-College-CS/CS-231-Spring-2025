@@ -1,5 +1,8 @@
 import javafx.application.Application;
 import javafx.stage.Stage;
+import javafx.scene.*;
+import javafx.scene.paint.Color;
+import javafx.scene.canvas.*;
 
 public class App extends Application
 {
@@ -15,6 +18,7 @@ public class App extends Application
       gc.setFill( Color.RED );
       gc.fillRect(50,50,10,10);
       Card c = new Card("2","C");
+      s.setScene(scene);
       s.show();
    }
 }
