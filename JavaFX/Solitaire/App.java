@@ -14,16 +14,27 @@ public class App extends Application
    @Override
    public void start(Stage s)
    {
-      g.getChildren().add( canvas );
-      Card c = new Card("2","C");
-      Card ca = new Card("J","H");
-      double x = 50;
-      double y = 50;
-      gc.drawImage( c.getImage(), x, y, Constants.cardWid, Constants.cardHei );
-      y += 30;
-      gc.drawImage( ca.getImage(), x, y, Constants.cardWid, Constants.cardHei );
-      
+      g.getChildren().add( canvas );      
+      Data.createDeck();
+      //renderDeck();      
       s.setScene(scene);
       s.show();
+   }
+   
+   public void renderDeck()
+   {
+      double x = 0;
+      double y = 0;
+      
+      for( Card c : Constants.deck )
+      {
+         gc.drawImage( c.getImage(), x, y, Constants.cardWid, Constants.cardHei );
+         x += Constants.cardWid;
+         if( x > Constants.canWid )
+         {
+            x = 0;
+            y += Constants.cardHei;
+         }
+      }
    }
 }
