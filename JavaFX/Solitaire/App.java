@@ -1,5 +1,11 @@
 import javafx.application.Application;
+import javafx.stage.Stage;
 
-public class App
+public class App extends Application
 {
+   @Override
+   public void start(Stage s)
+   {
+      s.show();
+   }
 }
