@@ -19,6 +19,9 @@ public class Card
    private void setImageView()
    {
       String filename = this.rank + "-" + this.suit+".png";
+      if( this.rank.equals( "BACK" ) )
+         filename = "BACK.png";
+         
       image = new Image("/cards/"+filename);
       imgView = new ImageView(image);
    }
@@ -37,19 +40,20 @@ public class Card
    {
       switch( rank.toLowerCase() )
       {
-         case "two": this.value = 2;break;
-         case "three": this.value = 3;break;
-         case "four": this.value = 4;break;
-         case "five": this.value = 5;break;
-         case "six": this.value = 6;break;
-         case "seven": this.value = 7;break;
-         case "eight": this.value = 8;break;
-         case "nine": this.value = 9;break;
-         case "ten": this.value = 10;break;
-         case "jack": this.value = 11;break;
-         case "queen": this.value = 12;break;
-         case "king": this.value = 13;break;
-         case "ace": this.value = 1;break;
+         case "2": this.value = 2;break;
+         case "3": this.value = 3;break;
+         case "4": this.value = 4;break;
+         case "5": this.value = 5;break;
+         case "6": this.value = 6;break;
+         case "7": this.value = 7;break;
+         case "8": this.value = 8;break;
+         case "9": this.value = 9;break;
+         case "10": this.value = 10;break;
+         case "j": this.value = 11;break;
+         case "q": this.value = 12;break;
+         case "k": this.value = 13;break;
+         case "a": this.value = 1;break;
+         default: this.value = 0;
       }
    }
    

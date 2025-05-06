@@ -26,9 +26,9 @@ public class App extends Application
       double x = 0;
       double y = 0;
       
-      for( Integer key : Constants.deck.keySet() )
+      for( Card c : Constants.deck )
       {
-         Card c = Constants.deck.get(key);         
+         //Card c = Constants.deck.get(key);         
          gc.drawImage( c.getImage(), x, y, Constants.cardWid, Constants.cardHei );
          x += Constants.cardWid;
          if( x >= Constants.canWid )
