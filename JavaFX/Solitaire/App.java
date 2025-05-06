@@ -3,6 +3,7 @@ import javafx.stage.Stage;
 import javafx.scene.*;
 import javafx.scene.paint.Color;
 import javafx.scene.canvas.*;
+import java.util.*;
 
 public class App extends Application
 {
@@ -16,7 +17,7 @@ public class App extends Application
    {
       g.getChildren().add( canvas );      
       Data.createDeck();
-      renderDeck();      
+      renderStacks();      
       s.setScene(scene);
       s.show();
    }
@@ -35,6 +36,28 @@ public class App extends Application
          {
             x = 0;
             y += Constants.cardHei;
+         }
+      }
+   }
+   
+   public void renderStacks()
+   {
+      double x = 0;
+      double y = 0;
+      
+      for( Integer key : Constants.stacks.keySet() )
+      {
+         ArrayList<Card> stack = Constants.stacks.get(key);
+         for( Card c : stack )
+         {
+            //Card c = Constants.deck.get(key);         
+            gc.drawImage( c.getImage(), x, y, Constants.cardWid, Constants.cardHei );
+            x += Constants.cardWid;
+            if( x >= Constants.canWid )
+            {
+               x = 0;
+               y += Constants.cardHei;
+            }
          }
       }
    }

@@ -1,4 +1,4 @@
-import java.util.Collections;
+import java.util.*;
 
 public class Data
 {
@@ -28,21 +28,17 @@ public class Data
          key++;
       }
       
-      key = 1;
-      int counter = 1;
-      int index = 0;
-      
-      while( index < 28 )
+      int i = 0;
+      for( Integer kkey : Constants.stacks.keySet() )
       {
-         Card c = Constants.deck.remove(index);
-         Constants.stacks.get(key).add(c);
-         if( key % counter == 0 )
+         ArrayList<Card> stack = Constants.stacks.get(kkey);
+         int count = 0; 
+         while( count < kkey )
          {
-            counter = 1;
-            key++;
+            stack.add( Constants.deck.get(i) );
+            count++;
+            i++;
          }
-         counter++;
-         index++;
       }
    }
 }
