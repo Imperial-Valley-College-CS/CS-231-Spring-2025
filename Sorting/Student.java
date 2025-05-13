@@ -37,11 +37,12 @@ public class Student implements Comparable<Student>
       this.age = (int)((t2-t1)/(1000.0*60*60*24*365.25));
    }
    public int getAge(){ return this.age; }
+   public String getName(){ return this.name; }
    
    @Override
    public int compareTo( Student s )
    {
-      return this.age - s.getAge();
+      return this.name.compareTo( s.getName() );
    }
    @Override
    public String toString()
