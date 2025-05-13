@@ -11,10 +11,9 @@ public class Student implements Comparable<Student>
    private double gpa;
    
    //constructor(s)   
-   public Student(String n, int a, String g, String dob)
+   public Student(String n, String g, String dob)
    {
       this.name = n;
-      this.age = a;
       this.id = g;
       setDOB( dob );
    }
@@ -26,10 +25,17 @@ public class Student implements Comparable<Student>
       int day = Integer.parseInt( tokens[1] );
       int year = Integer.parseInt( tokens[2] );
       this.dob = new GregorianCalendar(year, month, day);
-      System.out.println( this.dob.get(Calendar.YEAR) );
+      setAge();
    }
    
    //methods 
+   private void setAge()
+   {
+      GregorianCalendar today = new GregorianCalendar();
+      long t2 = today.getTimeInMillis();
+      long t1 = this.dob.getTimeInMillis();
+      this.age = (int)((t2-t1)/(1000.0*60*60*24*365.25));
+   }
    public int getAge(){ return this.age; }
    
    @Override
