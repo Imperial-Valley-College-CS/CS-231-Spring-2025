@@ -4,13 +4,20 @@ public class Sort
 {
    public static void main(String[] args)
    {
-      int[] arr = {5, 3, 8, 21, 34, 7};
+      int[] arr = {5, 3, 18, 21, 12, 7};
       int[] newArr = sort( arr );
       System.out.println( Arrays.toString( newArr ) );
+      System.out.println( findSmallest( arr, 2 ) );
    }
    public static int[] sort( int[] arr )
    {
-      //sort array and then return
+      for( int i = 0; i < arr.length-1; i++ )
+      {
+         int temp = arr[i];
+         int k = findSmallest( arr, i );  //location of smallest element
+         arr[i] = arr[k];     //place smallest element at i
+         arr[k] = temp;       //place ith element where smallest was
+      }
       return arr;
    }
    
