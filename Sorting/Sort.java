@@ -4,16 +4,16 @@ public class Sort
 {
    public static void main(String[] args)
    {
-      int[] arr = {5, 3, 18, 21, 12, 7};
-      int[] newArr = sort( arr );
+      Integer[] arr = {5, 3, 18, 21, 12, 7};
+      Integer[] newArr = sort( arr );
       System.out.println( Arrays.toString( newArr ) );
       System.out.println( findSmallest( arr, 2 ) );
    }
-   public static int[] sort( int[] arr )
+   public static <E extends Comparable<E>> E[] sort( E[] arr )
    {
       for( int i = 0; i < arr.length-1; i++ )
       {
-         int temp = arr[i];
+         E temp = arr[i];
          int k = findSmallest( arr, i );  //location of smallest element
          arr[i] = arr[k];     //place smallest element at i
          arr[k] = temp;       //place ith element where smallest was
@@ -21,13 +21,13 @@ public class Sort
       return arr;
    }
    
-   public static int findSmallest( int[] arr, int start)
+   public static <E extends Comparable<E>> int findSmallest( E[] arr, int start)
    {
-      int smallest = arr[start];
+      E smallest = arr[start];
       int index = start;
       for( int i = start + 1; i < arr.length; i++ )
       {  
-         if( arr[i] < smallest )
+         if( arr[i].compareTo(smallest) < 0 )
          {
             smallest = arr[i];
             index = i;
