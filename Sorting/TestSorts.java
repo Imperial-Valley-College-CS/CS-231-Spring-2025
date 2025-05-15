@@ -11,13 +11,19 @@ public class TestSorts
    
    public static void testTimeToSort()
    {
-      Integer[][] arr = createMatrix( 100 );    //create 100 arrays size = 100
-      long t1 = System.currentTimeMillis();     //logs current time (t1)
-      for( Integer[] row : arr )
-         Sort.selectionSort( row );             //sorts row
-      long t2 = System.currentTimeMillis();     //longs current time (t2)
-      printArrays( arr );
-      System.out.println( (double)(t2-t1)/1000.0 );
+      int size = 100;
+      while( size <= 12800 )
+      {
+         Integer[][] arr = createMatrix( size );    //create 100 arrays size = 100
+         long t1 = System.currentTimeMillis();     //logs current time (t1)
+         for( Integer[] row : arr )
+            Sort.selectionSort( row );             //sorts row
+         long t2 = System.currentTimeMillis();     //longs current time (t2)
+         //printArrays( arr );
+         double time = ( (t2-t1)/1000.0 )/100;
+         System.out.printf("%d %.5f\n", size, time );
+         size *= 2;
+      }
    }
    
    public static void printArrays( Integer[][] arr )
