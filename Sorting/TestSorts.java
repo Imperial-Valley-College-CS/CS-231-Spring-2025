@@ -6,7 +6,24 @@ public class TestSorts
    {
       //testArrayOfIntegers();
       //testArrayOfStudents();
-      
+      testTimeToSort();
+   }
+   
+   public static void testTimeToSort()
+   {
+      Integer[][] arr = createMatrix( 100 );    //create 100 arrays size = 100
+      long t1 = System.currentTimeMillis();     //logs current time (t1)
+      for( Integer[] row : arr )
+         Sort.selectionSort( row );             //sorts row
+      long t2 = System.currentTimeMillis();     //longs current time (t2)
+      printArrays( arr );
+      System.out.println( (double)(t2-t1)/1000.0 );
+   }
+   
+   public static void printArrays( Integer[][] arr )
+   {  
+      for( Integer[] row : arr )
+         System.out.println( Arrays.toString(row) );
    }
    
    public static void testArrayOfStudents()
