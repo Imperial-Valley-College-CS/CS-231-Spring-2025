@@ -5,7 +5,8 @@ public class TestSorts
    public static void main(String[] args)
    {
       //testArrayOfIntegers();
-      testArrayOfStudents();
+      //testArrayOfStudents();
+      
    }
    
    public static void testArrayOfStudents()
@@ -25,5 +26,25 @@ public class TestSorts
       Integer[] arr = {5, 3, 18, 21, 12, 7};
       Integer[] newArr = Sort.selectionSort( arr );
       System.out.println( Arrays.toString( newArr ) );
+   }
+   
+   public static Integer[] randArray( int size )
+   {
+      Integer[] arr = new Integer[size];
+      for( int i = 0; i < arr.length; i++ )
+      {
+         arr[i] = (int)(10*size*Math.random()) + 1;
+      }
+      return arr;
+   }
+   
+   public static Integer[][] createMatrix( int size )
+   {
+      Integer[][] arr = new Integer[100][size];
+      for( int i = 0; i < arr.length; i++ )
+      {
+         arr[i] = randArray( size );
+      }
+      return arr;
    }
 }
