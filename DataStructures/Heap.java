@@ -36,10 +36,9 @@ public class Heap<E extends Comparable<E>>
    
    private void arrangeRemove()
    {
-      E lastElement = this.arr.remove( this.arr.size()-1 );
-      this.arr.set(0, lastElement);
-      
       int i = 0;
+      E lastElement = this.arr.remove( this.arr.size()-1 );
+      this.arr.set(i, lastElement);
       E biggerChild = getBiggerChild(i);
       
       while( biggerChild != null && this.arr.get(i).compareTo( biggerChild ) < 0 )

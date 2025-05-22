@@ -4,23 +4,13 @@ public class TestHeap
    {
       Heap<Integer> intHeap = new Heap<>();
       intHeap.add(50);
-      intHeap.add(35);
-      intHeap.add(42);
-      intHeap.add(12);
-      intHeap.add(2);
-      intHeap.add(6);
+      intHeap.add(46);
+      intHeap.add(36);
+      intHeap.add(31);
+      intHeap.add(30);
       
-      System.out.println( intHeap );
-      
-      intHeap.add(60);
-      
-      System.out.println( intHeap );
-      
-      
-      intHeap.add(40);
-      
-      System.out.println( intHeap );
-      
+      System.out.println( intHeap );      
       intHeap.removeRoot();
+      System.out.println( intHeap );
    }
 }
