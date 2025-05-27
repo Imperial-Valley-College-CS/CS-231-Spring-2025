@@ -21,6 +21,22 @@ public class LinkedList<T>
    
    public int size(){ return this.size; }
    
+   @Override
+   public String toString()
+   {
+      Node s = this.head;     //consider that head of list is null
+      String str = "[";
+      while( s != null )
+      {
+         str += s.getElem() + " ";
+         s = s.getNext();
+      }
+      if( str.length() > 1 )
+         str = str.substring(0, str.length()-1);     //removes extra trailing space
+      str += "]";
+      return str;
+   }
+   
    class Node
    {
       T elem;
@@ -36,5 +52,9 @@ public class LinkedList<T>
       {
          this.next = next;
       }
+      
+      public Node getNext(){ return this.next; }
+      public T getElem(){ return this.elem; }      
+      public boolean hasNext(){  return this.next != null; }
    }
 }
