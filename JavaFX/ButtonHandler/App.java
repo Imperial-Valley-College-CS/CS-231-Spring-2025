@@ -9,10 +9,15 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
 import javafx.scene.layout.HBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.ScrollPane;
 
 public class App extends Application
 {
+   TextArea textArea = new TextArea("Hi\nHi\nHi\nHi\nHi\nHi\nHi\nHi\nHi\n");
+   ScrollPane scrollPane = new ScrollPane( textArea );
    ComboBox<HBox> cmb = new ComboBox<HBox>();
+   
    private Font font = new Font("OK",40);
    private Button bttn = new Button();
    private Scene scene = new Scene(cmb);
@@ -22,10 +27,11 @@ public class App extends Application
    HBox box2 = new HBox(new Rectangle(10, 10, Color.BLUE), new Label("BLUE"));
    HBox box3 = new HBox(new Rectangle(10, 10, Color.GREEN), new Label("GREEN"));
    
+   
    @Override
    public void start( Stage s )
    {
-      
+      cmb.setOnAction( handleBttn );  
       cmb.getItems().addAll( box1, box2, box3 );
      
       bttn.setFont( font );
@@ -40,9 +46,12 @@ public class App extends Application
       @Override
       public void handle(ActionEvent e)
       {
-         Button pressedBttn = (Button)e.getSource();
-         if( pressedBttn.getText().equals("OK") )
-            System.out.println( "Hi" );
+         // Button pressedBttn = (Button)e.getSource();
+//          if( pressedBttn.getText().equals("OK") )
+//             System.out.println( "Hi" );
+            
+         HBox box = cmb.getValue();
+         System.out.println( box );
       }
    }
 }
